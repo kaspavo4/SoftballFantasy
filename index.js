@@ -1,13 +1,15 @@
-import puppeteer from "puppeteer";
 import express from "express";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
+
 app.get("/", async (req, res) => {
   try {
     const browser = await puppeteer.launch({
-      headless: "new", // Použij nový headless režim
+      headless: "new",
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
